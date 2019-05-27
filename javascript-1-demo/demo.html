@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+    <title>Javascript Demo</title>
+    <script src="play.js"></script>
+</head>
+<body>
+
+<h1>Javascript Demo</h1>
+
+<h3> To see the developer console: right click and press "inspect". </h3>
+
+<h3>  Or use the keyboard shortcut: cmd + opt + j </h3>
+
+<script>
+    // Pick a secret number
+    var myNumber = Math.floor(Math.random() * 100);
+
+    function guessMyNumber(guess) {
+
+        if (guess < myNumber) {
+            console.log("Too low!");
+        } else if (guess > myNumber) {
+            console.log("Too high!");
+        } else {
+            console.log("Yay!");
+        }
+    }
+
+    // function
+    function multiply1(x, y) {
+        return x * y;
+    }
+
+    // same, a "function expression":
+    var multiply2 = function (x, y) {
+        return x * y;
+    };
+
+</script>
+
+</body>
+</html>

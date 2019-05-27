@@ -1,0 +1,294 @@
+<html>
+  <head>
+    <title>Flashy JavaScript Demo</title>
+
+    <!-- bootstrap styling -->
+    <link rel="stylesheet" href="https://bootswatch.com/darkly/bootstrap.min.css">
+
+    <!-- jquery; loading here for inline javascript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+    <!-- inline css -->
+    <style>
+
+      .centered {
+        text-align: center;
+      }
+
+      .mouse-image-size {
+        width: 605;
+        height: 426;
+      }
+
+      .mouse-image-placement {
+        position:absolute;
+      }
+
+      .mouseon {
+        border: 5px solid red;
+      }
+
+      .mouseoff {
+        border: 5px solid black;
+      }
+
+      .invalid_text {
+        background-color: pink;
+      }
+
+      .spacey {
+        margin: 10px;
+      }
+
+      .headline-label {
+        font-size: 1.75em;
+        font-weight: normal;
+      }
+
+      .pulldown-width {
+        width: 150px;
+      }
+
+      .warnings {
+        height: 80px;
+      }
+
+      .alert {
+        position: absolute;
+      }
+
+    </style>
+
+  </head>
+  <body>
+    <div class="container centered">
+      <h1>Cool things with JavaScript</br>
+      <h3>(that you can't do with Python)</h3>
+
+<!-- mouse image feature -->
+
+      <div class="row">
+        <div class="col-xs-12 center-block" style="float:none">
+          <h3>
+            Mouse over the image! 
+            <button class="btn btn-primary spacey" id="mouse-button">
+              Hide Mouse
+            </button>
+          </h3>
+          <div id="mouse-image-div" class="mouse-image-size">
+            <img id="mouseover-image" 
+                 src="mouse_over.jpg" 
+                 class="mouse-image mouse-image-size mouse-image-placement mouseoff">
+            </img>
+            <img id="hidemouse-image" 
+                 src="hide_mouse.jpg" 
+                 class="mouse-image mouse-image-size mouse-image-placement mouseoff" 
+                 style="display:none">
+            </img>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        "use strict";
+
+        ////////////////// control mouseover for image /////////////
+        var mImg = $('.mouse-image');
+        mImg.hover(function () {
+          mImg.toggleClass('mouseon');
+          mImg.toggleClass('mouseoff');
+        });
+
+        // show / hide mouse image
+        var mButt = $('#mouse-button');
+        mButt.click(function () {
+
+          $('#mouseover-image').fadeToggle(2000);
+          $('#hidemouse-image').fadeToggle(2000);
+
+          if (mButt.html() === "Show Mouse") {
+            mButt.html("Hide Mouse");
+          } else {
+            mButt.html("Show Mouse");
+          }
+        })
+      </script>
+
+<!-- integer feature -->
+
+      <div class="row">
+        <div class="col-xs-12 center-block" style="float:none">
+          <h3>Type an integer of 3 digits!
+            <input id="three-digits" type="text" class="three-digits"></input>
+          </h3>
+          <div class="warnings">
+            <span id="not-integer" class="alert alert-danger" style="display:none">
+              That's not an integer!
+            </span>
+            <span id="too-long" class="alert alert-danger" style="display:none">
+              That's more than three digits!
+            </span>
+            <span id="too-short" class="alert alert-danger" style="display:none">
+              That's fewer than three digits!
+            </span>
+            <span id="just-right" class="alert alert-success" style="display:none">
+              What a great three-digit integer!
+            </span>
+         </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      "use strict";
+
+      /////////////// validation for checkbox /////////////////
+      var tDigs = $('#three-digits');
+      var intErr = $('#not-integer');
+      var longErr = $('#too-long');
+      var shortErr = $('#too-short');
+      var justRight = $('#just-right');
+
+      tDigs.keyup(function() {
+        var entered = tDigs.val();
+
+        // if there's no text, hide everything
+        if (entered === "") {
+          intErr.hide();
+          longErr.hide();
+          shortErr.hide();
+          justRight.hide();
+
+        } else {
+          // is it an integer? Using regular expressions here to tell 
+          var notInt = !(/^\d+$/.test(entered));
+
+          if (notInt) {
+            intErr.show();
+
+            // if it's not an int, that's our biggest problem; don't bother 
+            // with length errors
+            longErr.hide();
+            shortErr.hide();
+
+            // and it's certainly not just right
+            justRight.hide();
+
+          // it's an integer
+          } else {  
+
+            // hide the intError
+            intErr.hide();
+
+            // just right!
+            if (entered.length === 3) {
+              justRight.show();
+            } else {
+              justRight.hide();
+            }
+
+            // is it longer than three digits? 
+            if (entered.length > 3) {
+              longErr.show(); 
+            } else {
+              longErr.hide();
+            }
+
+            // it's shorter than three digits by process of elimination
+            if (entered.length < 3) {
+              shortErr.show();
+            } else {
+              shortErr.hide();
+            }
+
+            // the above can be made much more compact with ternary expressions 
+            // (http://www.w3schools.com/js/js_comparisons.asp)
+
+            // (entered.length === 3 ? justRight.show() : justRight.hide());
+            // (entered.length > 3 ? longErr.show() : longErr.hide());
+            // (entered.length < 3 ? shortErr.show() : shortErr.hide());
+          }
+        }
+      });
+    </script>
+
+<!-- dynamic pulldowns feature -->
+
+    <div class="row">
+      <div class="col-xs-12 center-block" style="float:none">
+        <div id="color-pulldowns" class="row">
+          <div class="col-xs-4"></div><!-- spacer column -->
+          <div class="col-xs-3">
+            <div id="color-fam-form-group" class="form-group">
+              <label class="headline-label" for="color-fam-pulldown">
+                Pick a color family:
+              </label>
+              <select id="color-fam-pulldown" class="pulldown-width spacey form-control">
+                <option></option>
+                <option>red</option>
+                <option>green</option>
+                <option>blue</option>
+              </select>
+            </div>
+          </div>
+          <div id="color-shade-form-group" class="col-xs-3" style="display:none">
+            <div class="form-group">
+              <label id="color-shade-label" class="headline-label" for="color-shade-pulldown">
+              </label>
+              <select id="color-shade-pulldown" class="pulldown-width spacey form-control">
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+
+    "use strict";
+
+    ////////////////// color family pulldowns ///////////////
+    var colorShades = {red: ['crimson', 'brick', 'scarlet'],
+                       green: ['forest', 'kelly', 'lime'],
+                       blue: ['peacock', 'navy', 'sky']};
+
+    // a general function to update the secondary pulldown
+    function addSecondPullOptions(color) {
+
+      // add the label for this color
+      $("#color-shade-label").html("Pick a shade of " + color + ": ");
+
+      // get array for the new pulldown
+      var shades = colorShades[color];
+
+      // get the secondary pulldown and empty it
+      var secondPull = $("#color-shade-pulldown");
+      secondPull.empty();
+
+      // add an option foreach array item
+      for (var i = 0; i < shades.length; i++) {
+        secondPull.append("<option>" + shades[i] + "</option>");
+      }
+
+      // finally, unhide the second pulldown
+      $('#color-shade-form-group').show();
+
+    };
+
+    // event handler for change to the main color pulldown
+    var mainPull = $("#color-fam-pulldown"); 
+    mainPull.change(function() {
+
+      // update the secondary pulldown if there's a color
+      if (mainPull.val() !== "") {
+        addSecondPullOptions(mainPull.val());
+      // otherwise, hide it
+      } else {
+        $('#color-shade-form-group').hide();
+      }
+    });
+
+    </script>
+
+  </body>
+</html>
