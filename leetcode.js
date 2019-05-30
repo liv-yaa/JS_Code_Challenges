@@ -19,3 +19,52 @@ var flipAndInvertImage = function(A) {
         });
     });
 };
+
+// 832. Flipping an Image 2 
+var flipAndInvertImage2 = function(A) {
+    let N = A.length;
+    let returnArray = Array(N).fill(0).map(() => Array(N).fill("0"));
+
+    for (let i = 0; i < N; i++) {
+        for (let j = 0; j < N; j++) {
+            returnArray[i][j] = A[i][N - 1 - j] == 0 ? 1 : 0;
+        }
+    }
+};
+
+
+/** 771. Jewels and Stones
+ * @param {string} J
+ * @param {string} S
+ * @return {number}
+ */
+var numJewelsInStones = function(J, S) {
+    var count = 0;
+    var jewels = J.split("");
+    
+    for (let stone of S) {
+        
+        if (jewels.includes(stone)) {
+            count += 1;
+        }
+    }
+    
+    return count;
+      
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
