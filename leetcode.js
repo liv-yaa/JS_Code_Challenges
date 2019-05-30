@@ -55,6 +55,23 @@ var numJewelsInStones = function(J, S) {
 
 
 
+/** 709. To Lower Case
+ * @param {string} str
+ * @return {string}
+ */
+var toLowerCase = function(str) {
+    let outstring = "";
+    
+    for (let char of str) {
+        l = char.toLowerCase()
+        outstring += l;
+    }
+    
+    return outstring;
+};
+
+
+
 
 
 
