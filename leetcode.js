@@ -1,9 +1,66 @@
 // leetcode.js
-
 // Copying from copy
 
-// 905. Sort Array By Parity
 
+/* These formats are 'function expressions' , or long-winded 
+'arrow functions' - you don't need the name of the function to last,
+but you do want to keep the result of it stored in a variable.
+
+Why? We don't want to call them immediately.
+
+Later, 'function expressions' are useful for callbacks such as:
+>> setTimeout(flipAndInvertImage, 1000);
+
+If the body of the function is short, just do a one liner:
+>> setTimeout(function () { alert("Time's Up"); }, 7000);
+*/
+
+/* ARRAY methods:
+    var states = ['MD', 'VA', 'CA'];
+
+    states.push('NY');
+
+    states[2];            // 'CA'
+    states.slice(2);      // ['CA', 'NY']
+    states.slice(2, 3);   // ['CA']
+
+    for (var state of states) {
+        console.log("I love " + state);
+    }
+
+    for (var i = 0; i < states.length; i++) {
+        console.log("I love " + states[i]);
+    }
+
+    
+    ******* Arrays use 'of' ***********
+*/
+
+/* DICTIONARY methods:
+    var capitals = {
+      "MD": 'Annapolis',
+      "CA": 'Sacramento',
+      "OR": 'Salem'
+    };
+
+    capitals.NY = 'Albany';
+    capitals["WA"] = 'Olympia';
+
+    Object.keys(capitals)
+    Object.values(capitals)
+    Object.entries(capitals)
+
+    for (var k in capitals) {
+        console.log(capitals[k] +
+                    " is the capital of " +
+                    k);
+    }
+
+
+    ******* Dictionaries use 'in' ***********
+*/
+
+// 905. Sort Array By Parity
 var sortArrayByParity = function(A) {
     let even = A.filter(a => a % 2 === 0);
     let odd = A.filter(a => a % 2 === 1);
