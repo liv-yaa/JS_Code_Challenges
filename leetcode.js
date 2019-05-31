@@ -78,6 +78,9 @@
 
 
     *** Dictionaries use 'in' ***********
+    if ('x' in dictionary) {
+        whatever
+    }
 
 
     *** Note that in JavaScript, you don’t need to quote the keys of objects if those keys are acceptable JavaScript identifier names.
@@ -170,6 +173,7 @@ var uniqueMorseRepresentations = function(words) {
     
     var codes = [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."];
     
+    // Created a JSON (JavaScript Object Notation) Object:
     var result = {}; // keys are alpha and codes are values
     
     for (var i = 0; i < alpha.length; i ++ ) {
@@ -201,8 +205,68 @@ var uniqueMorseRepresentations = function(words) {
     return set.size;
     
 };
+// Here is their better solution (https://leetcode.com/problems/unique-morse-code-words/discuss/128738/Declarative-Javascript)
+var uniqueMorseRepresentations2 = function(words) {
+    var morse = {
+        a: ".-",
+        b: "-...",
+        c: "-.-.",
+        d: "-..",
+        e: ".",
+        f: "..-.",
+        g: "--.",
+        h: "....",
+        i: "..",
+        j: ".---",
+        k: "-.-",
+        l: ".-..",
+        m: "--",
+        n: "-.",
+        o: "---",
+        p: ".--.",
+        q: "--.-",
+        r: ".-.",
+        s: "...",
+        t: "-",
+        u: "..-",
+        v: "...-",
+        w: ".--",
+        x: "-..-",
+        y: "-.--",
+        z: "--.."
+    }
+
+    const transformWord = (word) => Array.from(word).reduce((acc, char) => acc + morse[char], '')
+    const addToSet = (set, word) => set.add(word)
+
+    return words.map(transformWord).reduce(addToSet, new Set([])).size
+};
 
 
+/* 961. N-Repeated Element in Size 2N Array
+
+    In a array A of size 2N, there are N+1 unique elements, and exactly one of these
+    elements is repeated N times. Return the element repeated N times.
+ */
+var repeatedNTimes = function(A) {
+    
+    let N = A.length / 2;
+    
+    var counts = {}
+    for (var num of A) {
+        if (num in counts) {
+            counts[num] += 1;
+        }
+        else {
+            counts[num] = 1;
+        }
+        
+        // Check if we have reached our N value:
+        if (counts[num] === N) {
+            return num;
+        }
+    }  
+};
 
 
 
