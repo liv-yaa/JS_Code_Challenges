@@ -41,6 +41,13 @@
 
 
 */
+/* STRING methods:
+    
+    - convert anything to a string using the .toString() method
+
+    - get index of anything in a string using the .indexOf() method
+    
+*/
 
 /* ARRAY methods:
     var states = ['MD', 'VA', 'CA'];
