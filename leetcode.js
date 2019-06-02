@@ -1,8 +1,15 @@
-// leetcode.js
-// Copying from copy
+// leetcode.js PLUS whirlwind JS review  5/31/19
 
 
 // From HB JS-1 Lecture:
+/*
+    var vs const vs let: https://hackernoon.com/js-var-let-or-const-67e51dbb716f
+    - var is NOT block scoped. That is, it will be valid outside the block.
+    - let IS block scoped. So it will not be valid outside the block. 
+        Specific scope -- less namespace error
+    - const is a constant. TypeError if you try to re-assign it.
+
+*/
 
 /* These formats are 'function expressions' , or long-winded 
     'arrow functions' - you don't need the name of the function to last,
@@ -56,6 +63,14 @@
     ******* Arrays use 'of' ***********
 */
 
+/* SET methods:
+
+    mySet = new Set(); // Have to use constructor, not just {}
+    mySet.add(value); // Adds value
+
+    
+*/
+
 /* DICTIONARY methods:
     var capitals = {
       "MD": 'Annapolis',
@@ -93,6 +108,7 @@
         capitals.MD         
         capitals['New York']
 */
+
 
 // 905. Sort Array By Parity
 var sortArrayByParity = function(A) {
@@ -269,8 +285,34 @@ var repeatedNTimes = function(A) {
 };
 
 
+/** 929. Unique Email Addresses
+ * @param {string[]} emails
+ For local names (before '@'):
+     - take out all '.'s
+     - ignore all after '+'
+ * @return {number} // How many emails after edits ^?
+ */
+var numUniqueEmails = function(emails) {
+    
+    let set = new Set();
+    
+    for (let email of emails) {
+        
+        let domain = '@' + email.split('@')[1];
+        
+        let plusOmitted = email.split('+')[0];
+      
+        let dotLocal = plusOmitted.split('.').join('');
+        
+        let final = dotLocal + domain;
 
-
+        set.add(final);
+        
+    }
+        
+    
+    return set.size;
+};
 
 
 
