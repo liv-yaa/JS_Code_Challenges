@@ -46,7 +46,7 @@
     - convert anything to a string using the .toString() method
 
     - get index of anything in a string using the .indexOf() method
-    
+
 */
 
 /* ARRAY methods:
@@ -323,6 +323,74 @@ var numUniqueEmails = function(emails) {
 
 
 
+/** 415. Add Strings
+ * Given two non-negative integers num1 and num2 represented as string, 
+ return the sum of num1 and num2.
+ * @param {string} num1
+ * @param {string} num2
+ * @return {string}
+ */
+var addStrings = function(num1, num2) {
+    console.log(num1 + " " + num2);
+    
+    var ints = "0123456789";
+    var n1 = 0;
+    var n2 = 0;
+
+    var factor = 1;
+    while (num1.length != 0) {
+        console.log("num1 " + num1);
+        console.log("factor " + factor);
+
+        var x = num1[num1.length - 1] * factor;
+        console.log('x ' + x);
+
+        // Add it
+        n1 = n1 + x;
+        console.log('n1 ' + n1);
+
+        // Increment 
+        factor = factor * 10;
+        num1 = num1.slice(0, num1.length - 1);
+
+        console.log()
+
+    }
+    
+    console.log('n1 ' + n1);
+
+
+    var factor = 1;
+    while (num2.length != 0) {
+        console.log("num2 " + num2);
+        console.log("factor " + factor);
+
+        var x = num2[num2.length - 1] * factor;
+        console.log('x ' + x);
+
+        // Add it
+        n2 = n2 + x;
+        console.log('n2 ' + n2);
+
+        // Increment 
+        factor = factor * 10;
+        num2 = num2.slice(0, num1.length - 1);
+
+        console.log()
+
+    }
+    
+    console.log('n2 ' + n2);
+    
+    var out = (n1 + n2).toString();
+
+    console.log('out ' + out);
+    
+    return out;
+    
+};
+
+addStrings('4568', '89');
 
 
 
