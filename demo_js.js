@@ -57,3 +57,20 @@ Object.entries(capitals)
 for (var k in capitals) {
     console.log(capitals[k] + "is the captial of " + k);
 }
+
+
+/**
+ * @param {number[]} A
+ * @return {number}
+ */
+var repeatedNTimes = function(A) {
+    var map = {}
+    for (var i = 0; i < A.length; i++) {
+        var e = A[i]
+        if (map[e]) {
+            return e
+        } else {
+            map[e] = true
+        }
+    }
+};
