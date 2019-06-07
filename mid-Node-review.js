@@ -84,7 +84,6 @@ const pisces = new Cat('pisces');
 
 const auden = new Cat('Auden');
 
-
 console.log(pisces.name + " " 
             + pisces.hunger + " " 
             + auden.name + " " 
@@ -93,11 +92,55 @@ console.log(pisces.name + " "
 
 
 
+// **************************************************************
+// 6. Prototypes = similar to classes in JS.
+// Every object in JS points to a prototype. 
+// 'Prototype Chain' - all the ancestry
+
+// This is how you add an attribute to a prototype & make a class attribute:
+Cat.prototype.food = 'kibble';
+
+// Now each cat shares that value:
+console.log(auden.food); 
+console.log(ezra.food);
 
 
 
 
 
+// **************************************************************
+// 7. Inheritance 
+// A class inherits from another class using `extends` keyword
+
+class SpanishCat extends Cat {
+
+    greet() {
+        return `Hola, I'm ${this.name}.`;
+    }
+
+    salsa() {
+        return `cha cha cha`;
+    }
+}
+
+
+
+
+// If you want to use the parent class attributes, SUPER it!
+class FrenchCat extends Cat {
+
+    greet() {
+        // Call parent method using `super` 
+        return `Bonjour and ${super.greet()}`;
+    }
+}
+
+
+
+
+// **************************************************************
+// 8. Advanced this 
+// 
 
 
 
