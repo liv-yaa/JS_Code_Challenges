@@ -20,19 +20,20 @@ Output:"love"
 */
 
 function LongestWord(sen) {
-    // Split by all non-characters
-    var regex = new RegExp('^a-zA-Z');
 
-    var sen_list = sen.split(regex);
+    // Take out all non characters
+    sen = sen.trim();
+    sen = sen.replace(/[^a-zA-Zsd]/g, '');
 
+    // Split
+    var arr = sen.split(' ');
 
-    // Keep track of longest length
+    // Sort by going through pairwise, determining if each
+    // pair is longer, and switching them if so.
+    arr.sort(function(a, b) {return b.length - a.length});
 
-    // Keep track of longest word so far
-
-    // Iter through list , updating longest word if longer
-
-    return sen_list;
+    // Remov3 the first item from an array and return it
+    return arr.shift();
 
 }
 
