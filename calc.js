@@ -3,7 +3,7 @@
 function adder(x, y) {
     return x + y;
 }
-
+c
 
 $('#calc-form').on('submit', function (evt) {
     evt.preventDefault();
@@ -14,3 +14,4 @@ $('#calc-form').on('submit', function (evt) {
     $('#result').text(adder(x, y));
 
 });
+

@@ -1,0 +1,9 @@
+// melon-info.json
+// Imagine we recieved this text from a web server...see parse-json.js
+
+{
+    "id": "watermelon",
+    "is_good": true,
+    "price":44,
+    "id_kust":[1, 3, 5],
+}
