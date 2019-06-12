@@ -8,7 +8,7 @@ https://coderbyte.com/challenges */
 
 
 
-/* 1. LongestWord
+/* 1. LongestWord -----------------------------------------
 Have the function LongestWord(sen) take the sen parameter being passed and 
 return the largest word in the string. 
 
@@ -37,9 +37,15 @@ function LongestWord(sen) {
 
 }
 
+// console.log(LongestWord('hello'));
+// console.log(LongestWord('fun$%^ time'));
+// console.log(LongestWord('I love dogs'));
 
 
 
-console.log(LongestWord('hello'));
-console.log(LongestWord('fun$%^ time'));
-console.log(LongestWord('I love dogs'));
+
+
+
+/* 2.  -----------------------------------------
+
+*/

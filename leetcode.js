@@ -41,11 +41,61 @@
 
 
 */
-/* STRING methods:
-    
+/* STRING (String.prototype)** methods:
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/prototype
+
+    *** All String instances inherit from String.prototype.
+    *** Changes to the String prototype object are propagated
+    *** to all String instances. And, PROPERTIES are:
+        - String.prototype.constructor
+        - String.prototype.length
+            .. the length of the string
+
+        - N
+            .. Used to access a character at the N position
+
+
     - convert anything to a string using the .toString() method
 
-    - get index of anything in a string using the .indexOf() method
+
+    - .indexOf()
+        Returns the index within the String object, 
+        or -1 if not found
+
+
+    - String.prototype.charAt()
+        Returns the character at the specified index
+
+
+    - eval() 
+        Takes a string and evaluates the expression:
+        
+        eval('2 + 2');
+        // 4
+
+        eval(new String('2 + 2'));
+        // '2 + 2'
+
+        eval('2 + 2') === eval('4');
+        // true
+
+
+    - SPLITTING
+        var myString = 'ca,bc,a,cbd,a';
+
+        var splitt = myString.split(',');
+        // splitt is ['ca', 'bc', 'a', 'cbd', 'a']
+
+        var splits = myString.split(['a', 'b']);
+        // splits is ['c', 'c', 'c']
+
+        var myString2 = 'Hello 1 word. Sentence number 2.';
+        var splits2 = myString2.split(/(\d)/);
+        // splits2 is [ "Hello ", "1", " word. Sentence number ", "2", "." ]
+
+
+    - REVERSING    
+
 
 */
 
