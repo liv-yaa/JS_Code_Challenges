@@ -41,6 +41,139 @@
 
 
 */
+
+/* Standard Objects by category...
+
+VALUE properties:
+    - Infinity
+    - NaN
+    - undefined
+    - null
+    - globalThis
+        ... the global this? lol
+
+
+GLOBAL functions
+    > Functions that are called globally rather than on an object/prototype
+    > They directly return their results to the caller
+
+        - eval() 
+            Takes a string and evaluates the expression:
+            
+            eval('2 + 2');
+            // 4
+
+            eval(new String('2 + 2'));
+            // '2 + 2'
+
+            eval('2 + 2') === eval('4');
+            // true
+
+        - isFinite()
+        - isNaN()
+        - parseFloat()
+        - parseInt()
+        - decodeURI()
+        - decodeURIComponent()
+
+
+
+FUNDAMENTAL Objects
+    > Fundamental, basic objects
+    > All other objects are based on these
+
+        - Object
+        - Function
+        - Boolean
+        - Symbol
+        - Error
+        - EvalError
+        - RangeError - indicates if a value is not in that range of allowed values
+        - ReferenceError
+        - SyntaxError
+        - TypeError
+        - URIError
+
+
+
+TEXT Processing
+    > String
+    > RegExp
+
+
+INDEXED Collections
+    > Array
+    > Int8Array
+    > ... alot more, Array types
+
+
+KEYED Collections
+    > Iterable
+    > Use keys
+        - Map - holds the original insertion order of the keys! Unlike Python ***
+        - Set - Stores unique values of any type
+        - WeakMap - can have any arbitrary value
+        - WeakSet
+
+
+STRUCTURED DATA (JSON-interacting)
+    > For data coded using JS Object Notation, These 
+
+        - ArrayBuffer
+        - Atomics
+        - DataView
+        - JSON
+
+Control Abstraction Objects
+    > ??
+        - Promise
+        - Generator
+            An object returned by a generator function
+            It conforms to both the iterable protocol and the iterator protocol
+
+
+        - GeneratorFunction
+            notation:
+            function * generator(i) {
+                yield i;
+                yield i + 10;
+            }
+
+            var gen = generator(10);
+
+            console.log(gen.next().value);
+            >> 10
+
+            console.log(gen.next().value);
+            >> 20
+
+            
+        - Async Function
+
+
+REFLECTION
+    > ??
+        - Reflect
+        - Proxy
+
+INTERNATIONALIZATION
+    
+WEB ASSEMBLY
+    WebAssembly
+    WebAssembly.Module
+    WebAssembly.Instance
+    WebAssembly.Memory
+    WebAssembly.Table
+    WebAssembly.CompileError
+    WebAssembly.LinkError
+    WebAssembly.RuntimeError
+
+OtherSection
+    arguments
+
+*/
+
+
 /* STRING (String.prototype)** methods:
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/prototype
 
@@ -63,8 +196,28 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
         or -1 if not found
 
 
-    - String.prototype.charAt()
+    - .charAt()
+        String.prototype.charAt()
         Returns the character at the specified index
+
+
+    - .endsWith()
+        String.prototype.endsWith('best', 16);
+        Returns boolean whether true
+        16 is length
+
+
+    - .includes()
+        String.prototype.includes('is');
+        Returns if true or false
+
+    
+    - .match()
+        result of matching a string against a regEx
+        var paragraph = 'The quick brown fox jumps over the lazy dog. It barked.';
+        var regex = /[A-Z]/g;
+        var found = paragraph.match(regex);
+        // found is the array ['T', 'I']
 
 
     - eval() 
@@ -78,6 +231,9 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
         eval('2 + 2') === eval('4');
         // true
+
+
+
 
 
     - SPLITTING
@@ -94,7 +250,11 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
         // splits2 is [ "Hello ", "1", " word. Sentence number ", "2", "." ]
 
 
-    - REVERSING    
+    - REVERSING 
+        var str = 'résumé';
+        var strReverse = str.split(/(?:)/u).reverse().join('');
+        // => "́emuśer
+        // Best to use === to check if palindrome to original   
 
 
 */
