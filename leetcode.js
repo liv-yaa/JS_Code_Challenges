@@ -130,11 +130,13 @@ Control Abstraction Objects
         - Generator
             An object returned by a generator function
             It conforms to both the iterable protocol and the iterator protocol
+            Common method uses next() ; see below...
 
 
         - GeneratorFunction
-            notation:
-            function * generator(i) {
+            // notation:
+
+            function* generator(i) {
                 yield i;
                 yield i + 10;
             }
@@ -142,10 +144,10 @@ Control Abstraction Objects
             var gen = generator(10);
 
             console.log(gen.next().value);
-            >> 10
+            // 10
 
             console.log(gen.next().value);
-            >> 20
+            // 20
 
             
         - Async Function
